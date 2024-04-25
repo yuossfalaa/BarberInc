@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:Views="clr-namespace:BarberInc.Views"
+                    xmlns:ViewModel="clr-namespace:BarberInc.ViewModel"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate DataType="{x:Type ViewModel:HomeViewModel}">
+        <Views:Home />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type ViewModel:LoginViewModel}">
+        <Views:Login />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type ViewModel:SignUpViewModel}">
+        <Views:Signup />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type ViewModel:ReservationViewModel}">
+        <Views:ReservationView />
+    </DataTemplate>
+</ResourceDictionary>
