@@ -10,9 +10,10 @@ namespace BarberInc
     public partial class MainWindow : Window
     {
         private readonly WindowInteropHelper _windowInteropHelper;
-        public MainWindow()
+        public MainWindow(MainViewModel MainViewModel)
         {
             InitializeComponent();
+            DataContext = MainViewModel;
             _windowInteropHelper = new WindowInteropHelper(this);
             size();
         }
