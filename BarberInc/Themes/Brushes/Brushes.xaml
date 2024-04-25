@@ -8,7 +8,7 @@
                      Color="#0c0c0c"
                      Opacity="0.3" />
     <SolidColorBrush x:Key="CardsColor"
-                     Color="#f3f3f3" />
+                     Color="#f3f3f3"  />
     <SolidColorBrush x:Key="PrimaryHueMidBrush"
                      Color="Black" />
 </ResourceDictionary>
