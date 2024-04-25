@@ -27,6 +27,7 @@
                 BorderBrush="White"
                 Width="200"
                 Height="50"
+                Command="{Binding SignUpRenavigatCommand}"
                 materialDesign:ButtonAssist.CornerRadius="25"
                 VerticalAlignment="Bottom"
                 Margin="0,0,0,100"
@@ -45,6 +46,7 @@
             <materialDesign:Card Margin="100,50,100,0"
                                  MaxWidth="400"
                                  MinHeight="450"
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                  Background="{StaticResource CardsColor}"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Stretch">
