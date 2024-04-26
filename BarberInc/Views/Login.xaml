@@ -8,95 +8,101 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card UniformCornerRadius="15">
-            <Image Source="\Resources\Images\BarberBlureImage.jpg"
-                   Stretch="UniformToFill"
-                   ClipToBounds="True">
-                <Image.Effect>
-                    <BlurEffect Radius="1" />
-                </Image.Effect>
-            </Image>
-        </materialDesign:Card>
-        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                Background="{StaticResource AlmostTransparentColor}"
-                BorderBrush="White"
-                Width="200"
-                Height="50"
-                Command="{Binding SignUpRenavigatCommand}"
-                materialDesign:ButtonAssist.CornerRadius="25"
-                VerticalAlignment="Bottom"
-                Margin="0,0,0,100"
-                Foreground="{StaticResource DefaultTextColor}">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Sign"
-                                         Width="23"
-                                         Height="23"
-                                         VerticalAlignment="Center"
-                                         Margin="0,0,15,0" />
-                <TextBlock Text="Sign Up"
-                           FontSize="20" />
-            </StackPanel>
-        </Button>
-        <Grid Grid.Column="1">
-            <materialDesign:Card Margin="100,50,100,0"
-                                 MaxWidth="400"
-                                 MinHeight="450"
-                                 materialDesign:ShadowAssist.ShadowDepth="Depth5"
-                                 Background="{StaticResource CardsColor}"
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Stretch">
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Welcome back."
-                               FontSize="30"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               Margin="0,30,0,50" />
-                    <TextBox FontSize="20"
-                             Margin="20,0,20,50"
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-                        <materialDesign:HintAssist.Hint>
-                            <StackPanel Margin="0,0,0,0"
-                                        Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="MailOutline"
-                                                         Width="23"
-                                                         Height="23"
-                                                         Margin="0,2,10,0" />
-                                <TextBlock Text="Email" />
-                            </StackPanel>
-                        </materialDesign:HintAssist.Hint>
-                    </TextBox>
-                    <PasswordBox FontSize="20"
-                                 Margin="20,0,20,50"
-                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                 materialDesign:TextFieldAssist.HasClearButton="True">
-                        <materialDesign:HintAssist.Hint>
-                            <StackPanel Margin="0,0,0,0"
-                                        Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="KeyOutline"
-                                                         Width="23"
-                                                         Height="23"
-                                                         Margin="0,2,10,0" />
-                                <TextBlock Text="Password" />
-                            </StackPanel>
-                        </materialDesign:HintAssist.Hint>
-                    </PasswordBox>
-                    <Button  Content="Login"
-                             Background="Transparent"
-                             FontSize="20"
-                             BorderBrush="#0c0c0c"
-                             Style="{StaticResource MaterialDesignFlatButton}"
-                             BorderThickness="2"
-                             Margin="20"
-                             MaxWidth="150"
-                             Height="40"
-                             materialDesign:ButtonAssist.CornerRadius="17" />
-                </StackPanel>
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card UniformCornerRadius="15">
+                <Image Source="\Resources\Images\BarberBlureImage.jpg"
+                       Stretch="UniformToFill"
+                       ClipToBounds="True">
+                    <Image.Effect>
+                        <BlurEffect Radius="1" />
+                    </Image.Effect>
+                </Image>
             </materialDesign:Card>
+            <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Background="{StaticResource AlmostTransparentColor}"
+                    BorderBrush="White"
+                    Width="200"
+                    Height="50"
+                    Command="{Binding SignUpRenavigatCommand}"
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,100"
+                    Foreground="{StaticResource DefaultTextColor}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Sign"
+                                             Width="23"
+                                             Height="23"
+                                             VerticalAlignment="Center"
+                                             Margin="0,0,15,0" />
+                    <TextBlock Text="Sign Up"
+                               FontSize="20" />
+                </StackPanel>
+            </Button>
+            <Grid Grid.Column="1">
+                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=00:00:0.2}">
+
+                    <materialDesign:Card Margin="100,50,100,0"
+                                         MaxWidth="400"
+                                         MinHeight="450"
+                                         materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                         Background="{StaticResource CardsColor}"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Stretch">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Welcome back."
+                                       FontSize="30"
+                                       FontWeight="Medium"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,30,0,50" />
+                            <TextBox FontSize="20"
+                                     Margin="20,0,20,50"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                <materialDesign:HintAssist.Hint>
+                                    <StackPanel Margin="0,0,0,0"
+                                                Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="MailOutline"
+                                                                 Width="23"
+                                                                 Height="23"
+                                                                 Margin="0,2,10,0" />
+                                        <TextBlock Text="Email" />
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </TextBox>
+                            <PasswordBox FontSize="20"
+                                         Margin="20,0,20,50"
+                                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                         materialDesign:TextFieldAssist.HasClearButton="True">
+                                <materialDesign:HintAssist.Hint>
+                                    <StackPanel Margin="0,0,0,0"
+                                                Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="KeyOutline"
+                                                                 Width="23"
+                                                                 Height="23"
+                                                                 Margin="0,2,10,0" />
+                                        <TextBlock Text="Password" />
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </PasswordBox>
+                            <Button  Content="Login"
+                                     Background="Transparent"
+                                     FontSize="20"
+                                     BorderBrush="#0c0c0c"
+                                     Style="{StaticResource MaterialDesignFlatButton}"
+                                     BorderThickness="2"
+                                     Margin="20"
+                                     MaxWidth="150"
+                                     Height="40"
+                                     materialDesign:ButtonAssist.CornerRadius="17" />
+                        </StackPanel>
+                    </materialDesign:Card>
+                </materialDesign:TransitioningContent>
+            </Grid>
         </Grid>
-    </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>
