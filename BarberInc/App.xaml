@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="/Themes/Brushes/Brushes.xaml" />
+                <ResourceDictionary Source="/Themes/Brushes/GradientBrushes.xaml" />
                 <ResourceDictionary Source="/Resources/VVM.xaml " />
 
             </ResourceDictionary.MergedDictionaries>
