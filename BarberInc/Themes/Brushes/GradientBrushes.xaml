@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <LinearGradientBrush x:Key="SigninCardOpecityMask"
+                         StartPoint="1,0"
+                         EndPoint="0,1">
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="0" />
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="0.5" />
+        <GradientStop Color="#6FFFFFFF"
+                      Offset="0.8" />
+
+    </LinearGradientBrush>    
+    <LinearGradientBrush x:Key="ImageOpecityMask"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="0" />
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="0.5" />
+        <GradientStop Color="#6FFFFFFF"
+                      Offset="0.8" />
+        <GradientStop Color="#00FFFFFF"
+                      Offset="1" />
+
+    </LinearGradientBrush>
+ 
+</ResourceDictionary>
