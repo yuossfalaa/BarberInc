@@ -14,7 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\barberBarbering.jpeg" />
     <None Remove="Resources\Images\BarberBlureImage.jpg" />
+    <None Remove="Resources\Images\Beard.jpg" />
+    <None Remove="Resources\Images\HairCut.jpg" />
+    <None Remove="Resources\Images\Tools.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +33,11 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Resource Include="Resources\Images\barberBarbering.jpeg" />
 	  <Resource Include="Resources\Images\BarberBlureImage.jpg" />
+	  <Resource Include="Resources\Images\Beard.jpg" />
+	  <Resource Include="Resources\Images\HairCut.jpg" />
+	  <Resource Include="Resources\Images\Tools.jpg" />
 	</ItemGroup>
 
 </Project>
