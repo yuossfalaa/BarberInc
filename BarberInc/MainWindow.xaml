@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen"
         MinWidth="1000"
         MinHeight="500"
-        Background="#080808"
+        Background="#1c1c1c"
         SizeChanged="Window_SizeChanged"
         RenderOptions.BitmapScalingMode="Fant"
         RenderOptions.EdgeMode="Unspecified"
