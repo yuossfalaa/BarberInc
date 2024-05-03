@@ -21,11 +21,12 @@ namespace BarberInc.ViewModel
         public BaseViewModel CurrentViewModel => _navigator.CurrentViewModel;
 
 
-        public MainViewModel(INavigator navigator, IViewModelFactory viewModelFactory)
+        public MainViewModel(INavigator navigator, IViewModelFactory viewModelFactory, ISnackbarMessageQueue messageQueue)
         {
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;
             _navigator.StateChanged += Navigator_StateChanged;
+            MyMessageQueue = messageQueue;
 
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(_viewModelFactory, _navigator);
             UpdateCurrentViewModelCommand.Execute(INavigator.ViewType.Login);
