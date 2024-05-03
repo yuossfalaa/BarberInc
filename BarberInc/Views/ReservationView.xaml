@@ -1,12 +1,310 @@
 ﻿<UserControl x:Class="BarberInc.Views.ReservationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:BarberInc.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+        <Grid>
+            <Button Command="{Binding HomeRenavigatCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Height="auto"
+                    Width="auto"
+                    VerticalAlignment="Top"
+                    Foreground="White"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    BorderBrush="White"
+                    HorizontalAlignment="Left"
+                    Margin="10,5,0,0">
+                <TextBlock Text="Home"
+                           FontSize="20" />
+            </Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1.5*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromBottom}"
+                                                             Grid.Row="1">
+
+                            <Border BorderBrush="White"
+                                    BorderThickness="1"
+                                    Margin="5"
+                                    CornerRadius="20">
+                                <materialDesign:Card UniformCornerRadius="20">
+                                    <Image Source="\Resources\Images\BarberBlureImage.jpg"
+                                           VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch"
+                                           Stretch="UniformToFill" />
+                                </materialDesign:Card>
+                            </Border>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}">
+                            <Border BorderBrush="White"
+                                    BorderThickness="1"
+                                    Margin="5,60,5,5"
+                                    Grid.Row="0"
+                                    CornerRadius="20">
+                                <materialDesign:Card  UniformCornerRadius="20">
+                                    <Image Source="\Resources\Images\HairCut.jpg"
+                                           VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch"
+                                           Margin="0,0,0,0"
+                                           Stretch="UniformToFill" />
+                                </materialDesign:Card>
+                            </Border>
+                        </materialDesign:TransitioningContent>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}"
+                                                             Grid.Row="1">
+
+                            <Border BorderBrush="White"
+                                    BorderThickness="1"
+                                    Margin="5,5,5,5"
+                                    CornerRadius="20">
+                                <materialDesign:Card UniformCornerRadius="20">
+                                    <Image Source="\Resources\Images\Beard.jpg"
+                                           VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch"
+                                           Stretch="UniformToFill" />
+                                </materialDesign:Card>
+                            </Border>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromTop}">
+                            <Border BorderBrush="White"
+                                    BorderThickness="1"
+                                    Margin="5,60,5,5"
+                                    Grid.Row="0"
+                                    CornerRadius="20">
+                                <materialDesign:Card  UniformCornerRadius="20">
+                                    <Image Source="\Resources\Images\Haircutandshaves.jpg"
+                                           VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch"
+                                           Margin="0,0,0,0"
+                                           Stretch="UniformToFill" />
+                                </materialDesign:Card>
+                            </Border>
+                        </materialDesign:TransitioningContent>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+
+                        <materialDesign:Card VerticalAlignment="Stretch"
+                                             HorizontalAlignment="Stretch"
+                                             Background="White"
+                                             Margin="5,60,5,10"
+                                             UniformCornerRadius="20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*" />
+                                    <RowDefinition Height="0.8*" />
+                                    <RowDefinition Height="0.8*" />
+                                    <RowDefinition Height="0.8*" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="1.3*" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Transform Your Look: Book Now"
+                                           FontSize="32"
+                                           Grid.Row="0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="20,0,20,0"
+                                           FontWeight="SemiBold"
+                                           FontFamily="sans"
+                                           TextWrapping="Wrap"
+                                           Opacity="0.8"
+                                           TextAlignment="Center" />
+                                <TextBox FontSize="20"
+                                         Margin="20,0,20,0"
+                                         VerticalAlignment="Center"
+                                         Grid.Row="1"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                    <materialDesign:HintAssist.Hint>
+                                        <StackPanel Margin="0,0,0,0"
+                                                    Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="AccountOutline"
+                                                                     Width="23"
+                                                                     Height="23"
+                                                                     Margin="0,2,10,0" />
+                                            <TextBlock Text="Full Name" />
+                                        </StackPanel>
+                                    </materialDesign:HintAssist.Hint>
+                                </TextBox>
+                                <TextBox FontSize="20"
+                                         Margin="20,0,20,0"
+                                         VerticalAlignment="Center"
+                                         Grid.Row="2"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                    <materialDesign:HintAssist.Hint>
+                                        <StackPanel Margin="0,0,0,0"
+                                                    Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="PhoneOutline"
+                                                                     Width="23"
+                                                                     Height="23"
+                                                                     Margin="0,2,10,0" />
+                                            <TextBlock Text="Phone Number" />
+                                        </StackPanel>
+                                    </materialDesign:HintAssist.Hint>
+                                </TextBox>
+                                <DatePicker materialDesign:HintAssist.Hint="Date"
+                                            materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
+                                            Grid.Row="3"
+                                            FontSize="20"
+                                            Margin="20,0,20,0">
+                                    <DatePicker.Resources>
+                                        <Style x:Key="CustomCalendarDayButton"
+                                               TargetType="CalendarDayButton"
+                                               BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                                            <Setter Property="materialDesign:CalendarAssist.SelectionColor"
+                                                    Value="#7e7e7e" />
+                                            <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                    Value="Black" />
+                                        </Style>
+                                        <Style x:Key="CustomCalendarButton"
+                                               TargetType="CalendarButton"
+                                               BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                                            <Setter Property="materialDesign:CalendarAssist.SelectionColor"
+                                                    Value="#7e7e7e" />
+                                            <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                    Value="White" />
+                                        </Style>
+                                        <Style x:Key="CustomCalendar"
+                                               TargetType="{x:Type Calendar}"
+                                               BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                                            <Setter Property="Background"
+                                                    Value="White" />
+                                            <Setter Property="CalendarButtonStyle"
+                                                    Value="{StaticResource CustomCalendarButton}" />
+                                            <Setter Property="CalendarDayButtonStyle"
+                                                    Value="{StaticResource CustomCalendarDayButton}" />
+                                            <Setter Property="Foreground"
+                                                    Value="White" />
+                                            <Setter Property="materialDesign:CalendarAssist.HeaderBackground"
+                                                    Value="Black" />
+                                            <Setter Property="materialDesign:CalendarAssist.HeaderForeground"
+                                                    Value="White" />
+                                        </Style>
+                                        <Style TargetType="DatePicker"
+                                               BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                                            <Setter Property="CalendarStyle"
+                                                    Value="{StaticResource CustomCalendar}" />
+                                        </Style>
+                                    </DatePicker.Resources>
+                                </DatePicker>
+                                <TextBlock Grid.Row="4" Text="Choose a Service" Margin="20,15,0,10" FontWeight="SemiBold" FontSize="20"/>
+                                <WrapPanel Grid.Row="5"
+                                           Margin="20,0,20,0">
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
+                                                      VerticalAlignment="Center"
+                                                      Margin="0,2,2,0"
+                                                      IsChecked="True"
+                                                      Background="Transparent"
+                                                      materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
+                                                      Style="{StaticResource MaterialDesignActionToggleButton}" />
+                                        <TextBlock Text="Haircut"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
+                                                      VerticalAlignment="Center"
+                                                      Margin="0,2,2,0"
+                                                      Background="Transparent"
+                                                      materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
+                                                      Style="{StaticResource MaterialDesignActionToggleButton}" />
+                                        <TextBlock Text="Haircut &amp; shaves"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
+                                                      VerticalAlignment="Center"
+                                                      Margin="0,2,2,0"
+                                                      Background="Transparent"
+                                                      materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
+                                                      Style="{StaticResource MaterialDesignActionToggleButton}" />
+                                        <TextBlock Text="Line up"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="5">
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
+                                                      VerticalAlignment="Center"
+                                                      Margin="0,2,2,0"
+                                                      Background="Transparent"
+                                                      materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
+                                                      Style="{StaticResource MaterialDesignActionToggleButton}" />
+                                        <TextBlock Text="Senior Haircut"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="5">
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
+                                                      VerticalAlignment="Center"
+                                                      Margin="0,2,2,0"
+                                                      Background="Transparent"
+                                                      materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
+                                                      Style="{StaticResource MaterialDesignActionToggleButton}" />
+                                        <TextBlock Text="Kids Haircut"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </WrapPanel>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="6"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                    <Button  Content="Book Now"
+                                             Background="#1c1c1c"
+                                             FontSize="20"
+                                             Foreground="White"
+                                             BorderBrush="#0c0c0c"
+                                             Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                             BorderThickness="0"
+                                             Margin="20"
+                                             Width="150"
+                                             Height="40"
+                                             Command="{Binding LoginViewModelRenavigatCommand}"
+                                             materialDesign:ButtonAssist.CornerRadius="20" />
+                                </StackPanel>
+
+
+
+
+                            </Grid>
+                        </materialDesign:Card>
+                    </materialDesign:TransitioningContent>
+                </Grid>
+            </Grid>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>

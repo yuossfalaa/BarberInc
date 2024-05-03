@@ -31,6 +31,7 @@
                        MouseMove="TriggerMoveWindow"
                        Background="Transparent"
                        Height="40"
+                       Margin="230,0,190,0"
                        VerticalAlignment="Top" />
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=00:00:00:0.8}">
                 <Grid>
@@ -80,8 +81,11 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:TransitioningContent>
-            
-  
+            <materialDesign:Snackbar MessageQueue="{Binding MyMessageQueue}"
+                                     Grid.Row="1"
+                                     Foreground="White"
+                                     Background="#424242"/>
+
         </Grid>
     </Grid>
 </Window>

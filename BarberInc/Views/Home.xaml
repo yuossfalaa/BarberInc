@@ -1,12 +1,357 @@
 ﻿<UserControl x:Class="BarberInc.Views.Home"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:BarberInc.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:BarberInc.Views">
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="UpperBorderOpecityMask"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#FFFFFFFF"
+                          Offset="0" />
+            <GradientStop Color="#FFFFFFFF"
+                          Offset="0.5" />
+            <GradientStop Color="#6FFFFFFF"
+                          Offset="0.8" />
+            <GradientStop Color="#00FFFFFF"
+                          Offset="1" />
+
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="LowerBorderOpecityMask"
+                             StartPoint="0,1"
+                             EndPoint="0,0">
+            <GradientStop Color="#FFFFFFFF"
+                          Offset="0" />
+            <GradientStop Color="#FFFFFFFF"
+                          Offset="0.3" />
+            <GradientStop Color="#6FFFFFFF"
+                          Offset="0.8" />
+            <GradientStop Color="#00FFFFFF"
+                          Offset="1" />
+
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="CardImageOpecityMask"
+                             StartPoint="0,0"
+                             EndPoint="0,1">
+            <GradientStop Color="#FFFFFFFF"
+                          Offset="0" />
+            <GradientStop Color="#FFFFFFFF"
+                          Offset="0.2" />
+            <GradientStop Color="#6FFFFFFF"
+                          Offset="0.5" />
+            <GradientStop Color="#00FFFFFF"
+                          Offset="1" />
+
+        </LinearGradientBrush>
+    </UserControl.Resources>
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+        <Grid>
+            <Grid HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="*" />
+                    <RowDefinition  Height="*" />
+                    <RowDefinition  Height="7*" />
+                </Grid.RowDefinitions>
+                <Image Source="\Resources\Images\HomeBackgound.jpg"
+                       Grid.Row="0"
+                       Grid.RowSpan="3"
+                       Stretch="Fill"
+                       Opacity="0.7" />
+                <Border Background="#1c1c1c"
+                        Grid.Row="0"
+                        Opacity="0.8"
+                        OpacityMask="{StaticResource UpperBorderOpecityMask}" />
+                <Border Background="#000000"
+                        Grid.Row="2"
+                        Opacity="0.97"
+                        OpacityMask="{StaticResource LowerBorderOpecityMask}" />
+            </Grid>
+            <Button Height="30"
+                    Width="30"
+                    Margin="0,7,160,0"
+                    Style="{StaticResource MaterialDesignIconForegroundButton}"
+                    Foreground="{StaticResource DefaultButtonColor}"
+                    Command="{Binding LogoutCommand}"
+                    ToolTip="Log out"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right">
+                <materialDesign:PackIcon Kind="Logout"
+                                         Height="25"
+                                         Width="25" />
+            </Button>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Button VerticalAlignment="Center"
+                        Height="auto"
+                        Width="auto"
+                        Margin="0,80,0,0"
+                        HorizontalAlignment="Center"
+                        Foreground="{StaticResource DefaultButtonColor}"
+                        BorderBrush="{StaticResource DefaultButtonColor}"
+                        materialDesign:ThemeAssist.Theme="Dark"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Command="{Binding ReservationRenavigatCommand}"
+                        BorderThickness="0,0,0,2">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}">
+
+                            <TextBlock Text="Reserve Now"
+                                       FontSize="32" />
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft}">
+
+                            <materialDesign:PackIcon Kind="ArrowRight"
+                                                     VerticalAlignment="Center"
+                                                     Width="25"
+                                                     Height="25"
+                                                     Margin="20,5,0,0" />
+                        </materialDesign:TransitioningContent>
+                    </StackPanel>
+                </Button>
+                <ScrollViewer HorizontalAlignment="Center"
+                              HorizontalScrollBarVisibility="Visible"
+                              Grid.Row="1">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}">
+
+                                <Border BorderBrush="#ffffff"
+                                        BorderThickness="0"
+                                        CornerRadius="15"
+                                        Margin="0,0,30,0">
+                                    <Grid>
+                                        <materialDesign:Card Height="200"
+                                                             Width="160"
+                                                             UniformCornerRadius="15"
+                                                             Background="White"
+                                                             OpacityMask="{StaticResource CardImageOpecityMask}">
+                                            <Image Source="\Resources\Images\HairCut.jpg"
+                                                   Stretch="UniformToFill"
+                                                   Margin="-50,0,0,0" />
+
+                                        </materialDesign:Card>
+                                        <TextBlock Text="Haircut"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="26"
+                                                   FontWeight="SemiBold"
+                                                   Margin="0,0,0,40"
+                                                   Foreground="{StaticResource DefaultTextColor}" />
+                                    </Grid>
+
+                                </Border>
+                            </materialDesign:TransitioningContent>
+                            <Button Padding="0"
+                                    Margin="0,0,30,0"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding ReservationRenavigatCommand}" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromBottom}">
+
+                                <Border BorderBrush="#ffffff"
+                                        BorderThickness="0"
+                                        CornerRadius="15"
+                                        Margin="0,0,30,0">
+                                    <Grid>
+                                        <materialDesign:Card Height="200"
+                                                             Width="160"
+                                                             UniformCornerRadius="15"
+                                                             Background="White"
+                                                             OpacityMask="{StaticResource CardImageOpecityMask}">
+                                            <Image Source="\Resources\Images\Haircutandshaves.jpg"
+                                                   Stretch="UniformToFill"
+                                                   Margin="0,0,0,0" />
+
+                                        </materialDesign:Card>
+                                        <TextBlock VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Center"
+                                                   Width="160"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"
+                                                   FontSize="26"
+                                                   FontWeight="SemiBold"
+                                                   LineHeight="30"
+                                                   LineStackingStrategy="BlockLineHeight"
+                                                   Margin="0,0,0,10"
+                                                   Foreground="{StaticResource DefaultTextColor}">
+                                    <Run Text="Haircut" /><LineBreak /><Run Text="&amp;" /><LineBreak /><Run Text="shaves" />
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                            </materialDesign:TransitioningContent>
+                            <Button Padding="0"
+                                    Margin="0,0,30,0"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding ReservationRenavigatCommand}" />
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}">
+
+                                <Border BorderBrush="#ffffff"
+                                        BorderThickness="0"
+                                        CornerRadius="15"
+                                        Margin="0,0,30,0">
+
+                                    <Grid>
+                                        <materialDesign:Card Height="200"
+                                                             Width="160"
+                                                             UniformCornerRadius="15"
+                                                             Background="White"
+                                                             OpacityMask="{StaticResource CardImageOpecityMask}">
+                                            <Image Source="\Resources\Images\Lineup.jpg"
+                                                   Stretch="UniformToFill"
+                                                   Margin="0,0,0,0" />
+
+                                        </materialDesign:Card>
+                                        <TextBlock Text="Line Up"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="26"
+                                                   FontWeight="SemiBold"
+                                                   Margin="0,0,0,40"
+                                                   Foreground="{StaticResource DefaultTextColor}" />
+
+                                    </Grid>
+                                </Border>
+                            </materialDesign:TransitioningContent>
+                            <Button Padding="0"
+                                    Margin="0,0,30,0"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding ReservationRenavigatCommand}" />
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromBottom}">
+                                <Border BorderBrush="#ffffff"
+                                        BorderThickness="0"
+                                        CornerRadius="15"
+                                        Margin="0,0,30,0">
+                                    <Grid>
+                                        <materialDesign:Card Height="200"
+                                                             Width="160"
+                                                             UniformCornerRadius="15"
+                                                             Background="White"
+                                                             OpacityMask="{StaticResource CardImageOpecityMask}">
+                                            <Image Source="\Resources\Images\SeniorHaircut.jpg"
+                                                   Stretch="UniformToFill"
+                                                   Margin="0,0,0,0" />
+
+                                        </materialDesign:Card>
+                                        <TextBlock VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Center"
+                                                   Width="160"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"
+                                                   FontSize="26"
+                                                   FontWeight="SemiBold"
+                                                   LineHeight="30"
+                                                   LineStackingStrategy="BlockLineHeight"
+                                                   Margin="0,0,0,20"
+                                                   Foreground="{StaticResource DefaultTextColor}">
+            <Run Text="Senior" /><LineBreak /><Run Text="Haircut" />
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                            </materialDesign:TransitioningContent>
+                            <Button Padding="0"
+                                    Margin="0,0,30,0"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding ReservationRenavigatCommand}" />
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}">
+
+                                <Border BorderBrush="#ffffff"
+                                        BorderThickness="0"
+                                        CornerRadius="15"
+                                        Margin="0,0,30,0">
+                                    <Grid>
+                                        <materialDesign:Card Height="200"
+                                                             Width="160"
+                                                             UniformCornerRadius="15"
+                                                             Background="White"
+                                                             OpacityMask="{StaticResource CardImageOpecityMask}">
+                                            <Image Source="\Resources\Images\BarberKids.jpg"
+                                                   Stretch="UniformToFill"
+                                                   Margin="0,0,0,0" />
+
+                                        </materialDesign:Card>
+                                        <TextBlock VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Center"
+                                                   Width="160"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"
+                                                   FontSize="26"
+                                                   FontWeight="SemiBold"
+                                                   LineHeight="30"
+                                                   LineStackingStrategy="BlockLineHeight"
+                                                   Margin="0,0,0,20"
+                                                   Foreground="{StaticResource DefaultTextColor}">
+      <Run Text="Kids" /><LineBreak /><Run Text="Haircut" />
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                            </materialDesign:TransitioningContent>
+                            <Button Padding="0"
+                                    Margin="0,0,30,0"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    Height="auto"
+                                    Width="auto"
+                                    materialDesign:ButtonAssist.CornerRadius="15"
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding ReservationRenavigatCommand}" />
+                        </Grid>
+
+                    </Grid>
+
+                </ScrollViewer>
+            </Grid>
+
+
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>

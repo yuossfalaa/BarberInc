@@ -62,6 +62,7 @@
                                        Margin="0,30,0,50" />
                             <TextBox FontSize="20"
                                      Margin="20,0,20,50"
+                                     Text="{Binding Email}"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Margin="0,0,0,0"
@@ -76,6 +77,7 @@
                             </TextBox>
                             <PasswordBox FontSize="20"
                                          Margin="20,0,20,50"
+                                         materialDesign:PasswordBoxAssist.Password="{Binding Password}"
                                          Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                                          materialDesign:TextFieldAssist.HasClearButton="True">
                                 <materialDesign:HintAssist.Hint>
@@ -93,6 +95,7 @@
                                      Background="Transparent"
                                      FontSize="20"
                                      BorderBrush="#0c0c0c"
+                                     Command="{Binding LoginCommand}"
                                      Style="{StaticResource MaterialDesignFlatButton}"
                                      BorderThickness="2"
                                      Margin="20"

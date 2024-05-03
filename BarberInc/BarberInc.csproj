@@ -11,18 +11,31 @@
 	  <PlatformTarget>AnyCPU</PlatformTarget>
 	  <SelfContained>true</SelfContained>
     <ApplicationIcon>Resources\Images\Icon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+	  <AssemblyName>Barber Inc</AssemblyName>
+
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AppSettings.json" />
     <None Remove="Resources\Images\barberBarbering.jpeg" />
     <None Remove="Resources\Images\BarberBlureImage.jpg" />
+    <None Remove="Resources\Images\BarberKids.jpg" />
     <None Remove="Resources\Images\Beard.jpg" />
     <None Remove="Resources\Images\HairCut.jpg" />
+    <None Remove="Resources\Images\Haircutandshaves.jpg" />
+    <None Remove="Resources\Images\HomeBackgound.jpg" />
+    <None Remove="Resources\Images\Lineup.jpg" />
+    <None Remove="Resources\Images\SeniorHaircut.jpg" />
     <None Remove="Resources\Images\Tools.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Resources\Images\Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AppSettings.json" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
@@ -30,13 +43,30 @@
 		<PackageReference Include="MaterialDesignColors" Version="2.1.4" />
 		<PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
 		<PackageReference Include="MaterialDesignThemes.MahApps" Version="0.3.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
+	  <ProjectReference Include="..\EntityFramework\EntityFramework.csproj" />
+	  <ProjectReference Include="..\Services\Services.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Resource Include="Resources\Images\barberBarbering.jpeg" />
 	  <Resource Include="Resources\Images\BarberBlureImage.jpg" />
+	  <Resource Include="Resources\Images\BarberKids.jpg" />
 	  <Resource Include="Resources\Images\Beard.jpg" />
 	  <Resource Include="Resources\Images\HairCut.jpg" />
+	  <Resource Include="Resources\Images\Haircutandshaves.jpg" />
+	  <Resource Include="Resources\Images\HomeBackgound.jpg" />
+	  <Resource Include="Resources\Images\Lineup.jpg" />
+	  <Resource Include="Resources\Images\SeniorHaircut.jpg" />
 	  <Resource Include="Resources\Images\Tools.jpg" />
 	</ItemGroup>
 
