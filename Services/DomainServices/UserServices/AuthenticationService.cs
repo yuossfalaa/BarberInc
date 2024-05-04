@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain;
+﻿using Domain;
 using Microsoft.AspNet.Identity;
 using Services.DomainServices.UserServices.Exceptions;
 using static Services.DomainServices.UserServices.IAuthenticationService;
@@ -56,6 +51,8 @@ namespace Services.DomainServices.UserServices
             {
                 throw new WrongPasswordException();
             }
+            if(StoredUser.Blocked) { throw new UserBlockedException(); }
+
             return StoredUser;
         }
 
