@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="BarberInc.Views.AdminDashView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BarberInc.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+ >
+    <Grid>
+        <materialDesign:Card VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             Background="#f8f8f8" Margin="30,50,30,10">
+            <TabControl materialDesign:ColorZoneAssist.Foreground="Black"
+                        materialDesign:ColorZoneAssist.Mode="Custom">
+                <TabItem Header="Reservations">
+                    <local:AdminReservationsPanalView DataContext="{Binding AdminReservationsPanalViewModel}"/>
+                </TabItem>
+                <TabItem Header="Users">
+                    <local:AdminUserPanalView DataContext="{Binding AdminUserPanalViewModel}"/>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
