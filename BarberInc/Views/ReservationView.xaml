@@ -138,6 +138,7 @@
                                          Margin="20,0,20,0"
                                          VerticalAlignment="Center"
                                          Grid.Row="1"
+                                         Text="{Binding NewReservation.FullName}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Margin="0,0,0,0"
@@ -154,6 +155,7 @@
                                          Margin="20,0,20,0"
                                          VerticalAlignment="Center"
                                          Grid.Row="2"
+                                         Text="{Binding NewReservation.PhoneNumber}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Margin="0,0,0,0"
@@ -169,6 +171,7 @@
                                 <DatePicker materialDesign:HintAssist.Hint="Date"
                                             materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left"
                                             Grid.Row="3"
+                                            SelectedDate="{Binding Date}"
                                             FontSize="20"
                                             Margin="20,0,20,0">
                                     <DatePicker.Resources>
@@ -176,7 +179,7 @@
                                                TargetType="CalendarDayButton"
                                                BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
                                             <Setter Property="materialDesign:CalendarAssist.SelectionColor"
-                                                    Value="#7e7e7e" />
+                                                    Value="#cacaca" />
                                             <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
                                                     Value="Black" />
                                         </Style>
@@ -218,7 +221,7 @@
                                         <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
                                                       VerticalAlignment="Center"
                                                       Margin="0,2,2,0"
-                                                      IsChecked="True"
+                                                      IsChecked="{Binding IsHaircutChecked}"
                                                       Background="Transparent"
                                                       materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
                                                       Style="{StaticResource MaterialDesignActionToggleButton}" />
@@ -231,6 +234,7 @@
                                         <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
                                                       VerticalAlignment="Center"
                                                       Margin="0,2,2,0"
+                                                      IsChecked="{Binding IsHaircutShaveChecked}"
                                                       Background="Transparent"
                                                       materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
                                                       Style="{StaticResource MaterialDesignActionToggleButton}" />
@@ -243,6 +247,7 @@
                                         <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
                                                       VerticalAlignment="Center"
                                                       Margin="0,2,2,0"
+                                                      IsChecked="{Binding IsLineupChecked}"
                                                       Background="Transparent"
                                                       materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
                                                       Style="{StaticResource MaterialDesignActionToggleButton}" />
@@ -256,6 +261,7 @@
                                         <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
                                                       VerticalAlignment="Center"
                                                       Margin="0,2,2,0"
+                                                      IsChecked="{Binding IsHaircutSeniorChecked}"
                                                       Background="Transparent"
                                                       materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
                                                       Style="{StaticResource MaterialDesignActionToggleButton}" />
@@ -269,6 +275,7 @@
                                         <ToggleButton Content="{materialDesign:PackIcon Kind=CheckboxBlankCircleOutline,Size=15}"
                                                       VerticalAlignment="Center"
                                                       Margin="0,2,2,0"
+                                                      IsChecked="{Binding IsHaircutKidsChecked}"
                                                       Background="Transparent"
                                                       materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=CheckboxMarkedCircleOutline,Size=16}"
                                                       Style="{StaticResource MaterialDesignActionToggleButton}" />
@@ -286,6 +293,7 @@
                                     <Button  Content="Book Now"
                                              Background="#1c1c1c"
                                              FontSize="20"
+                                             Command="{Binding BookCommand}"
                                              Foreground="White"
                                              BorderBrush="#0c0c0c"
                                              Style="{StaticResource MaterialDesignFlatAccentBgButton}"
@@ -293,7 +301,6 @@
                                              Margin="20"
                                              Width="150"
                                              Height="40"
-                                             Command="{Binding LoginViewModelRenavigatCommand}"
                                              materialDesign:ButtonAssist.CornerRadius="20" />
                                 </StackPanel>
 
