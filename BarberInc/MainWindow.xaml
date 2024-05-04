@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:BarberInc"
         xmlns:Views="clr-namespace:BarberInc.Views"
+        xmlns:Converters="clr-namespace:BarberInc.Converters"
         WindowState="Maximized"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -16,6 +17,12 @@
         RenderOptions.BitmapScalingMode="Fant"
         RenderOptions.EdgeMode="Unspecified"
         Title="Barber inc.">
+    <Window.Resources>
+        <Converters:CurrentViewModelToVisibilityConverter x:Key="CurrentViewModelToVisibilityConverter"
+                                                          TrueValue="Visible"
+                                                          FalseValue="Collapsed" />
+
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -45,6 +52,19 @@
                                 VerticalAlignment="Center"
                                 Margin="0,0,10,0"
                                 Orientation="Horizontal">
+                        <Button Height="30"
+                                Width="30"
+                                Margin="20,5,0,0"
+                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                Foreground="{StaticResource DefaultButtonColor}"
+                                Command="{Binding LogoutCommand}"
+                                Visibility="{Binding CurrentViewModel,Converter={StaticResource CurrentViewModelToVisibilityConverter}}"
+                                ToolTip="Log out">
+                            <materialDesign:PackIcon Kind="Logout"
+                                                     Height="25"
+                                                     Width="25" />
+                        </Button>
+
                         <Button Height="30"
                                 Width="30"
                                 Margin="20,5,0,0"
