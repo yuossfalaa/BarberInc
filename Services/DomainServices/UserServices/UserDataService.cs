@@ -1,6 +1,7 @@
 ﻿using Domain;
 using EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Services.DomainServices.Common;
 
 namespace Services.DomainServices.UserServices;
@@ -76,6 +77,29 @@ public class UserDataService : IUserService
 
             }
             return entity;
+
+        }
+    }
+
+    public async Task<List<User>> Search(string term)
+    {
+        using (DBContext context = _contextFactory.CreateDbContext())
+        {
+            List<User> entities = new List<User>();
+            try
+            {
+                entities = await context.Set<User>().Where(a => term.IsNullOrEmpty() ||
+                (
+                a.FullName.ToLower().Contains(term.ToLower())) || a.PhoneNumber.ToLower().Contains(term.ToLower()) || a.Email.ToLower().Contains(term.ToLower())
+                ).ToListAsync();
+
+                return entities;
+            }
+            catch
+            {
+
+            }
+            return entities;
 
         }
     }
