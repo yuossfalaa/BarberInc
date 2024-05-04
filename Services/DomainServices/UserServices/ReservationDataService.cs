@@ -2,6 +2,7 @@
 using EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.IdentityModel.Tokens;
 using Services.DomainServices.Common;
 
 namespace Services.DomainServices.UserServices
@@ -70,6 +71,39 @@ namespace Services.DomainServices.UserServices
                     entities = await context.Set<Reservation>()
                         .Include(a => a.User)
                         .ToListAsync();
+                    return entities;
+                }
+                catch
+                {
+
+                }
+                return entities;
+
+            }
+        }
+
+        public async Task<List<Reservation>> GetAllBySearch(string term, DateTime from, DateTime to)
+        {
+            using (DBContext context = _contextFactory.CreateDbContext())
+            {
+                List<Reservation> entities = new List<Reservation>();
+                try
+                {
+                    entities = await context.Set<Reservation>()
+                        .Where(a=>a.Date.Date >= from.Date && a.Date.Date <= to.Date.Date)
+                        .Include(a => a.User)
+                        .ToListAsync();
+                    if (!term.IsNullOrEmpty())
+                    {
+                        entities = new List<Reservation>(entities.Where(a => a.User is not null &&
+                        (
+                            a.User.FullName.ToLower().Contains(term.ToLower()) || a.User.PhoneNumber.ToLower().Contains(term.ToLower()) ||
+                            a.FullName.ToLower().Contains(term.ToLower()) || a.PhoneNumber.ToLower().Contains(term.ToLower())
+                        
+                        )
+                        
+                        ));
+                    }
                     return entities;
                 }
                 catch
