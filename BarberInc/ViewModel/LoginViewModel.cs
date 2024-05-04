@@ -19,6 +19,7 @@ namespace BarberInc.ViewModel
     {
         private readonly IRenavigator signupRenavigat;
         private readonly IRenavigator homeRenavigat;
+        private readonly IRenavigator AdminDashRenavigat;
         private readonly IAuthenticators _authenticators;
         private readonly ISnackbarMessageQueue _snackbarMessageQueue;
         public ICommand SignUpRenavigatCommand { get; set; }
@@ -30,7 +31,9 @@ namespace BarberInc.ViewModel
         private string password;
 
 
-        public LoginViewModel(ViewModelDelegateRenavigator<SignUpViewModel> signupRenavigat, ViewModelDelegateRenavigator<HomeViewModel> homeRenavigat, IAuthenticators authenticators, ISnackbarMessageQueue snackbarMessageQueue)
+        public LoginViewModel(ViewModelDelegateRenavigator<SignUpViewModel> signupRenavigat, ViewModelDelegateRenavigator<HomeViewModel> homeRenavigat, IAuthenticators authenticators, 
+            ISnackbarMessageQueue snackbarMessageQueue, 
+            ViewModelDelegateRenavigator<AdminDashViewModel> adminDashRenavigat)
         {
             this.signupRenavigat = signupRenavigat;
             SignUpRenavigatCommand = new RenavigateCommand(this.signupRenavigat);
@@ -40,16 +43,17 @@ namespace BarberInc.ViewModel
             _snackbarMessageQueue = snackbarMessageQueue;
             Email = string.Empty;
             Password = string.Empty;
+            AdminDashRenavigat = adminDashRenavigat;
         }
         [RelayCommand]
         public async Task Login()
         {
             await Task.Run(async () =>
             {
-                Settings settings = new Settings();
-                if (Email == settings.UserName && Password == settings.Password)
+                App_Settings settings = new App_Settings();
+                if (Email == settings.appSettings.UserName && Password == settings.appSettings.Password)
                 {
-
+                    AdminDashRenavigat.Renavigate();
                     return;
                 }
                 try
@@ -66,6 +70,11 @@ namespace BarberInc.ViewModel
                 catch (WrongPasswordException ex)
                 {
                     _snackbarMessageQueue.Enqueue("Password or Email are Wrong");
+                }
+                catch (UserBlockedException ex)
+                {
+                    _snackbarMessageQueue.Enqueue("This User Was Blocked By an Admin");
+
                 }
                 catch (Exception ex)
                 {
