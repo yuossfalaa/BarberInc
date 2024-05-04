@@ -13,7 +13,8 @@ namespace BarberInc.States.Navigators
             Login,
             SignUp,
             Home,
-            Reservation
+            Reservation,
+            AdminDash
         }
         BaseViewModel CurrentViewModel { get; set; }
         event Action StateChanged;
