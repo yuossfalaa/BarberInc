@@ -14,4 +14,7 @@
     <DataTemplate DataType="{x:Type ViewModel:ReservationViewModel}">
         <Views:ReservationView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type ViewModel:AdminDashViewModel}">
+        <Views:AdminDashView />
+    </DataTemplate>
 </ResourceDictionary>
