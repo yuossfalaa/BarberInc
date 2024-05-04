@@ -69,19 +69,6 @@
                         Opacity="0.97"
                         OpacityMask="{StaticResource LowerBorderOpecityMask}" />
             </Grid>
-            <Button Height="30"
-                    Width="30"
-                    Margin="0,7,160,0"
-                    Style="{StaticResource MaterialDesignIconForegroundButton}"
-                    Foreground="{StaticResource DefaultButtonColor}"
-                    Command="{Binding LogoutCommand}"
-                    ToolTip="Log out"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Right">
-                <materialDesign:PackIcon Kind="Logout"
-                                         Height="25"
-                                         Width="25" />
-            </Button>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
