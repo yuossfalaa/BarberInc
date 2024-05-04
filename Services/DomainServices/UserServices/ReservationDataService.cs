@@ -1,6 +1,7 @@
 ﻿using Domain;
 using EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Services.DomainServices.Common;
 
 namespace Services.DomainServices.UserServices
@@ -16,7 +17,23 @@ namespace Services.DomainServices.UserServices
         }
         public async Task<Reservation> Create(Reservation entity)
         {
-            return await _nonQueryDataService.Create(entity);
+            using (DBContext context = _contextFactory.CreateDbContext())
+            {
+                if (entity.User != null) entity.User = null;
+
+
+                EntityEntry<Reservation> createdResult = await context.Set<Reservation>().AddAsync(entity);
+                try
+                {
+                    await context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                return createdResult.Entity;
+
+            }
         }
 
         public async Task<bool> Delete(Reservation entity)
@@ -31,7 +48,8 @@ namespace Services.DomainServices.UserServices
                 Reservation entity = new Reservation();
                 try
                 {
-                    entity = await context.Set<Reservation>().FirstOrDefaultAsync((e) => e.Id == id);
+                    entity = await context.Set<Reservation>().Include(a => a.User)
+                        .FirstOrDefaultAsync((e) => e.Id == id);
 
                 }
                 catch
@@ -49,7 +67,9 @@ namespace Services.DomainServices.UserServices
                 List<Reservation> entities = new List<Reservation>();
                 try
                 {
-                    entities = await context.Set<Reservation>().ToListAsync();
+                    entities = await context.Set<Reservation>()
+                        .Include(a => a.User)
+                        .ToListAsync();
                     return entities;
                 }
                 catch
@@ -63,7 +83,25 @@ namespace Services.DomainServices.UserServices
 
         public async Task<Reservation> Update(int id, Reservation entity)
         {
-            return await _nonQueryDataService.Update(id, entity);
+            using (DBContext context = _contextFactory.CreateDbContext())
+            {
+                if (entity.User != null) entity.User = null;
+
+                entity.Id = id;
+
+                context.Set<Reservation>().Update(entity);
+                try
+                {
+                    await context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    string message = ex.ToString();
+                }
+
+
+                return entity;
+            }
         }
     }
 }
