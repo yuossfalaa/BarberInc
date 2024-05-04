@@ -1,0 +1,281 @@
+﻿<UserControl x:Class="BarberInc.Views.AdminReservationsPanalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BarberInc.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Converters="clr-namespace:BarberInc.Converters">
+    <UserControl.Resources>
+        <Converters:DateTimeConverter x:Key="DateTimeConverter" />
+    </UserControl.Resources>
+    <StackPanel>
+
+        <Grid Height="80"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <DatePicker SelectedDate="{Binding From}"
+                        materialDesign:HintAssist.Hint="From"
+                        FontSize="16"
+                        Margin="0,0,20,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <DatePicker.Resources>
+                    <Style x:Key="CustomCalendarDayButton"
+                           TargetType="CalendarDayButton"
+                           BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                        <Setter Property="materialDesign:CalendarAssist.SelectionColor"
+                                Value="#cacaca" />
+                        <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                Value="Black" />
+                    </Style>
+                    <Style x:Key="CustomCalendarButton"
+                           TargetType="CalendarButton"
+                           BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                        <Setter Property="materialDesign:CalendarAssist.SelectionColor"
+                                Value="#7e7e7e" />
+                        <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                Value="White" />
+                    </Style>
+                    <Style x:Key="CustomCalendar"
+                           TargetType="{x:Type Calendar}"
+                           BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                        <Setter Property="Background"
+                                Value="White" />
+                        <Setter Property="CalendarButtonStyle"
+                                Value="{StaticResource CustomCalendarButton}" />
+                        <Setter Property="CalendarDayButtonStyle"
+                                Value="{StaticResource CustomCalendarDayButton}" />
+                        <Setter Property="Foreground"
+                                Value="White" />
+                        <Setter Property="materialDesign:CalendarAssist.HeaderBackground"
+                                Value="Black" />
+                        <Setter Property="materialDesign:CalendarAssist.HeaderForeground"
+                                Value="White" />
+                    </Style>
+                    <Style TargetType="DatePicker"
+                           BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                        <Setter Property="CalendarStyle"
+                                Value="{StaticResource CustomCalendar}" />
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <DatePicker SelectedDate="{Binding To}"
+                        Grid.Column="1"
+                        FontSize="16"
+                        materialDesign:HintAssist.Hint="To"
+                        Margin="0,0,20,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <DatePicker.Resources>
+                    <Style x:Key="CustomCalendarDayButton"
+                           TargetType="CalendarDayButton"
+                           BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                        <Setter Property="materialDesign:CalendarAssist.SelectionColor"
+                                Value="#cacaca" />
+                        <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                Value="Black" />
+                    </Style>
+                    <Style x:Key="CustomCalendarButton"
+                           TargetType="CalendarButton"
+                           BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                        <Setter Property="materialDesign:CalendarAssist.SelectionColor"
+                                Value="#7e7e7e" />
+                        <Setter Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                Value="White" />
+                    </Style>
+                    <Style x:Key="CustomCalendar"
+                           TargetType="{x:Type Calendar}"
+                           BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                        <Setter Property="Background"
+                                Value="White" />
+                        <Setter Property="CalendarButtonStyle"
+                                Value="{StaticResource CustomCalendarButton}" />
+                        <Setter Property="CalendarDayButtonStyle"
+                                Value="{StaticResource CustomCalendarDayButton}" />
+                        <Setter Property="Foreground"
+                                Value="White" />
+                        <Setter Property="materialDesign:CalendarAssist.HeaderBackground"
+                                Value="Black" />
+                        <Setter Property="materialDesign:CalendarAssist.HeaderForeground"
+                                Value="White" />
+                    </Style>
+                    <Style TargetType="DatePicker"
+                           BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                        <Setter Property="CalendarStyle"
+                                Value="{StaticResource CustomCalendar}" />
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <materialDesign:ColorZone Margin="50,8,0,0"
+                                      Padding="5"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      Grid.Column="2"
+                                      materialDesign:ElevationAssist.Elevation="Dp2"
+                                      CornerRadius="2"
+                                      Mode="Standard">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="1"
+                             MaxWidth="250"
+                             FontSize="16"
+                             Text="{Binding Searchterm,UpdateSourceTrigger=PropertyChanged}"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             materialDesign:HintAssist.Hint="Search By Name or Phone Number" />
+                    <Button Style="{StaticResource MaterialDesignToolButton}"
+                            Grid.Column="2"
+                            Margin="5,0,0,0"
+                            Command="{Binding GetRecordsCommand}">
+                        <materialDesign:PackIcon Kind="Search"
+                                                 Opacity=".56" />
+                    </Button>
+
+                </Grid>
+            </materialDesign:ColorZone>
+        </Grid>
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Reservations}"
+                  Validation.ErrorTemplate="{x:Null}"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionUnit="FullRow"
+                  SelectionMode="Extended"
+                  AutoGenerateColumns="False"
+                  Background="{x:Null}"
+                  RenderOptions.BitmapScalingMode="HighQuality"
+                  FontSize="16"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling">
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn Header="Full Name"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="FullName"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="Phone Number"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="PhoneNumber"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="Date"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="Date"
+                                 Converter="{StaticResource DateTimeConverter}"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="Service Type"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="Service"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="User Name"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="User.FullName"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="User Phone Number"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="User.PhoneNumber"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>
