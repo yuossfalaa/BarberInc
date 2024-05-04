@@ -23,6 +23,9 @@ namespace BarberInc.HostBuilders
                 services.AddTransient<LoginViewModel>();
                 services.AddTransient<SignUpViewModel>();
                 services.AddTransient<ReservationViewModel>();
+                services.AddTransient<AdminDashViewModel>();
+                services.AddTransient<AdminReservationsPanalViewModel>();
+                services.AddTransient<AdminUserPanalViewModel>();
 
                 #endregion
 
@@ -31,6 +34,7 @@ namespace BarberInc.HostBuilders
                 services.AddSingleton<CreateViewModel<LoginViewModel>>(services => () => services.GetRequiredService<LoginViewModel>());
                 services.AddSingleton<CreateViewModel<SignUpViewModel>>(services => () => services.GetRequiredService<SignUpViewModel>());
                 services.AddSingleton<CreateViewModel<ReservationViewModel>>(services => () => services.GetRequiredService<ReservationViewModel>());
+                services.AddSingleton<CreateViewModel<AdminDashViewModel>>(services => () => services.GetRequiredService<AdminDashViewModel>());
 
                 #endregion
 
@@ -40,6 +44,7 @@ namespace BarberInc.HostBuilders
                 services.AddSingleton<ViewModelDelegateRenavigator<LoginViewModel>>();
                 services.AddSingleton<ViewModelDelegateRenavigator<SignUpViewModel>>();
                 services.AddSingleton<ViewModelDelegateRenavigator<ReservationViewModel>>();
+                services.AddSingleton<ViewModelDelegateRenavigator<AdminDashViewModel>>();
 
                 #endregion
 
