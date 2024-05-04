@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="BarberInc.Views.AdminUserPanalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BarberInc.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <StackPanel>
+        <materialDesign:ColorZone Margin="50,8,0,0"
+                                  Padding="5"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  Grid.Column="2"
+                                  materialDesign:ElevationAssist.Elevation="Dp2"
+                                  CornerRadius="2"
+                                  Mode="Standard">
+            <Grid VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="1"
+                         MaxWidth="450"
+                         FontSize="16"
+                         Text="{Binding SearchTerm,UpdateSourceTrigger=PropertyChanged}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         materialDesign:HintAssist.Hint="Search By Name, Phone Number or Email" />
+                <Button Style="{StaticResource MaterialDesignToolButton}"
+                        Grid.Column="2"
+                        Margin="5,0,0,0"
+                        Command="{Binding GetRecordsCommand}">
+                    <materialDesign:PackIcon Kind="Search"
+                                             Opacity=".56" />
+                </Button>
+
+            </Grid>
+        </materialDesign:ColorZone>
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Users}"
+                  Validation.ErrorTemplate="{x:Null}"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionUnit="FullRow"
+                  SelectionMode="Extended"
+                  AutoGenerateColumns="False"
+                  Background="{x:Null}"
+                  RenderOptions.BitmapScalingMode="HighQuality"
+                  FontSize="16"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling">
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn Header="Full Name"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="FullName"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="Phone Number"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="PhoneNumber"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="Email"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="Email"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <materialDesign:DataGridTextColumn Header="Blocked"
+                                                   IsReadOnly="True"
+                                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </materialDesign:DataGridTextColumn.ElementStyle>
+                    <materialDesign:DataGridTextColumn.Binding>
+                        <Binding Path="Blocked"
+                                 Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </materialDesign:DataGridTextColumn.Binding>
+                </materialDesign:DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Style="{StaticResource MaterialDesignFlatAccentButton}"
+                                        Foreground="Black"
+                                        Content="Block/UnBlock"
+                                        BorderBrush="Black"
+                                        BorderThickness="1"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},
+                                                    Path=DataContext.BlockUserCommand}"
+                                        CommandParameter="{Binding}">
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>
